@@ -1,8 +1,8 @@
--module(mytace).
+-module(mytrace).
 -export([start/0]).
 
 -ifdef(debug).
--define(TRACE(X),io.format("TRACE ~p:~p ~p~n",[?MODULE,?LINE,X])).
+-define(TRACE(X),io:format("TRACE ~p:~p ~p ~p~n",[?MODULE,?FILE,?LINE,X])).
 -else.
 -define(TRACE(X),void).
 -endif.
@@ -14,4 +14,6 @@ loop(0)->
 loop(N)->
 	?TRACE(N),
 	loop(N-1).
+
+
 
